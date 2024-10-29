@@ -1,3 +1,4 @@
+#pragma once
 #include<cstdlib>
 #include<iostream>
 // parse fields from a query string, separating them by whitespace

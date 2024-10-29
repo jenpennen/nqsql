@@ -1,4 +1,5 @@
 #include "Table.h"
+#include "QueryParser.cpp"
 #include<stdexcept>
 #include<cstdlib>
 #include<vector>
@@ -37,4 +38,27 @@ Table::Table(std::string keyColumn, const std::vector<std::string>& columns){
         totalColumns = columns.size();
         // std::cout << totalColumns << std::endl;
     
+}
+
+void Table::insert(const std::string& recordString){
+    
+    if(recordString.empty())
+        throw std::invalid_argument("Record string cannot be empty.");
+
+    std::vector<std::string> row;
+    QueryParser parser(recordString);
+    std::string temp, primaryKeyValue;
+    int columnCheck = 1;
+
+    while(parser.getNextField(temp)){
+        if (columnCheck == keyColumnNumber){
+            primaryKeyValue = temp;
+        }
+        row.push_back(temp);
+        columnCheck++;
+    }
+
+    if (row.size() != totalColumns)
+        throw std::invalid_argument("Invalid number of columns in record string.");
+
 }
