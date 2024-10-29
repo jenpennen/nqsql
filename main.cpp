@@ -1,4 +1,4 @@
-#include "queryparser.cpp"
+#include "QueryParser.cpp"
 #include "Table.cpp"
 #include "Table.h"
 #include <iostream>
@@ -33,17 +33,21 @@ int main() {
     std::vector<std::pair<std::string, std::vector<std::string>>> tableCases = {
         {"hi", {"hi", "col2"}},
         {"name", {"firstName", "name", "age"}},
-        {"id", {"country", "city", "zipcode"}}
+        {"id", {"country", "city", "zipcode", "id"}}
     };
     for (const auto& tableCase:tableCases) {
         testTable(tableCase.first, tableCase.second);
     }
 
-    // try {
-    //     Table table("", {"col1", "col2"});
-    // } catch (const std::invalid_argument& e) {
-    //     std::cerr << "Error: " << e.what() << std::endl;
-    // }
+    try {
+        Table table("col1", {"col1", "col2"});
+        table.insert("one two three");
+
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Invalid input error: " << e.what() << std::endl;
+    } catch (const std::logic_error& e) {
+        std::cerr << "Logic error: " << e.what() << std::endl;
+    }
     return 0;
 
 }
