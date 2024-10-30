@@ -62,3 +62,7 @@ void Table::insert(const std::string& recordString){
         throw std::invalid_argument("Invalid number of columns in record string.");
 
 }
+
+// void Table::find(std::string key, std::vector<std::vector<std::string>>& records) const {
+
+// }

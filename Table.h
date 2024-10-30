@@ -10,6 +10,7 @@ public:
     Table(std::string keyColumn, const std::vector<std::string>& columns);
     ~Table() {};
     void insert(const std::string& recordString);
+    void find(std::string key, std::vector<std::vector<std::string>>& records) const {};
     // Table(const Table&) = delete;
     // Table& operator=(const Table&) = delete;
 private:
