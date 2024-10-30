@@ -2,6 +2,7 @@
 #include "Table.cpp"
 #include "Table.h"
 #include <iostream>
+#include <cassert>
 
 void testQuery(const std::string& input){
     QueryParser parser(input);
@@ -41,13 +42,24 @@ int main() {
 
     try {
         Table table("col1", {"col1", "col2"});
-        table.insert("one two three");
+        table.insert("one two");
 
     } catch (const std::invalid_argument& e) {
         std::cerr << "Invalid input error: " << e.what() << std::endl;
     } catch (const std::logic_error& e) {
         std::cerr << "Logic error: " << e.what() << std::endl;
     }
+
+    Hashmap hashmap;
+    std::vector<std::string> record1 = {"Alice 23 Engineer"};
+    std::vector<std::string> record2 = {"Emily 23 Engineer"};
+    std::vector<std::string> record3 = {"Janice 23 Engineer"};
+
+    assert(hashmap.insert("Alice", record1));
+    assert(hashmap.insert("Emily", record2));
+    assert(hashmap.insert("Janice", record3));
+    std::cout << "PASSED" << std::endl;
+
     return 0;
 
 }
