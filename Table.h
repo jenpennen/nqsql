@@ -70,6 +70,8 @@ private:
     
 };
 
+
+
 class Table {
 public:
     Table(std::string keyColumn, const std::vector<std::string>& columns);
