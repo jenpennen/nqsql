@@ -40,7 +40,7 @@ Table::Table(std::string keyColumn, const std::vector<std::string>& columns){
     
 }
 
-void Table::insert(const std::string& recordString){
+bool Table::insert(const std::string& recordString){
     
     if(recordString.empty())
         throw std::invalid_argument("Record string cannot be empty.");
@@ -61,8 +61,5 @@ void Table::insert(const std::string& recordString){
     if (row.size() != totalColumns)
         throw std::invalid_argument("Invalid number of columns in record string.");
 
+    return data.insert(primaryKeyValue, row);
 }
-
-// void Table::find(std::string key, std::vector<std::vector<std::string>>& records) const {
-
-// }
