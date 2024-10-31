@@ -63,3 +63,4 @@ bool Table::insert(const std::string& recordString){
 
     return data.insert(primaryKeyValue, row);
 }
+
